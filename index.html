@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cork board</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>ТВОЯ ПРОБКОВАЯ ДОСКА</header>
+    <main>
+      <section class="panel closePanel">
+        <div class="panel__btn btnAdd">
+          <img src="./images/iconPlus.svg" alt="add" class="icon" />
+        </div>
+        <div class="panel__btn btnText disabled">
+          <img src="./images/iconPencil.svg" alt="write" class="icon" />
+        </div>
+        <div class="panel__btn btnPalette disabled">
+          <img src="./images/iconPalette.svg" alt="colorize" class="icon" />
+        </div>
+        <div class="panel__btn btnResizing disabled">
+          <img
+            src="./images/iconChange.svg"
+            alt="change the size"
+            class="icon"
+          />
+        </div>
+      </section>
+      <div class="panel__flag panel__flag--close">
+        <img
+          src="./images/iconRight.svg"
+          alt="panel show"
+          class="icon panel__btn--show"
+        />
+      </div>
+      </div>
+      <section class="board">
+        <img src="./images/board.jpg" alt="доска" class="board__img" />
+      </section>
+      <section class="modal">
+        <div class="modal__content">
+          <div class="modal__content__title">
+            <img
+              src="./images/iconClose.svg"
+              alt="закрыть"
+              class="icon iconClose"
+            />
+            <p>Привет я твоя заметка</p>
+          </div>
+          <div class="modal__content__note">
+            <input type="text" class="modal__content__note--title" placeholder="Тут надо поменять" maxlength="20"/>
+            <textarea class="modal__content__note--text">Место для твоей заметки</textarea>
+            <div class="modal__content__note--save modal--btn">Сохранить</div>
+            <div class="modal--close modal--btn">Закрыть</div>
+          </div>
+        </div>
+        <div class="modal__palette">
+            <span>Цвета для кнопки</span>
+            <div class="modal__palette__container--forBtn">
+            </div>
+            <span>Цвета для листка</span>
+            <div class="modal__palette__container--forList">
+            </div>
+            <div class="modal--close modal--btn">Закрыть</div>
+          </div>
+          <div class="modal__resizing">
+            <span>Изменить размер</span>
+            <input type="range" min="50" max="100" step="5" class="modal__resizing__inputSize"/>
+            <span>Изменить наклон</span>
+            <input type="range" min="0" max="360" step="10" class="modal__resizing__inputRotate"/>
+            <div class="modal--close modal--btn">Закрыть</div>
+          </div>
+      </section>
+    </main>
+     <script type="module" src="js/index.js"></script>
+  </body>
+</html>
