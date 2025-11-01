@@ -1,6 +1,8 @@
+import { generateId } from "./modules/notes/notes.js"
+
 export const notes = [
     {
-        id: 0,
+        id: generateId(),
         title: 'У тебя получилось!',
         text: 'Теперь осталось чуточку доработать',
         colorButton: '#415111',
@@ -12,7 +14,7 @@ export const notes = [
         rotate: 0,
     },
     {
-        id: 1,
+        id: generateId(),
         title: 'hello',
         text: 'world',
         colorButton: '#F1642E',

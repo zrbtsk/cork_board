@@ -6,17 +6,14 @@ import { createNoteUI } from './notes/notes-ui.js';
 
 let currentNoteId = null;
 
-export function setCurrentNoteId(id) {
+function setCurrentNoteId(id) {
     currentNoteId = id;
     const notesDiv = document.querySelectorAll('.note');
 
     notesDiv.forEach((noteDive) => {
-        console.log(Number(noteDive.id) === id)
         noteDive.style.zIndex = '5';
-        if(Number(noteDive.id) === id) {
-            console.log('zindex')
+        if(noteDive.id === id) {
             noteDive.style.zIndex = '20';
-            console.log(noteDive.style)
         }
     })
 }
@@ -44,9 +41,11 @@ export function initPalette(colorBtn, colorList) {
                 btn.classList.remove('selected');
             });
             e.target.classList.add('selected');
+
+            const currentNote = notes.find((noteId) => noteId.id === currentNoteId);
             
             const color = e.target.style.backgroundColor;
-            notes[currentNoteId].colorButton = color;
+            currentNote.colorButton = color;
             createNoteUI(currentNoteId);
         }
     });
@@ -58,8 +57,12 @@ export function initPalette(colorBtn, colorList) {
             });
             e.target.classList.add('selected');
             
+            const currentNote = notes.find((noteId) => noteId.id === currentNoteId);
+
+            console.log(currentNote)
+
             const color = e.target.style.backgroundColor;
-            notes[currentNoteId].colorList = color;
+            currentNote.colorList = color;
             createNoteUI(currentNoteId);
         }
     });
@@ -76,7 +79,7 @@ export function createColor(id) {
         item.classList.remove('selected');
     });
     
-    const note = notes[id];
+    const note = notes.find((noteId) => noteId.id === id);
     if (note.colorButton) {
         document.querySelectorAll('.modal__palette__container__colorBtn').forEach(btn => {
             if (btn.style.backgroundColor === note.colorButton) {

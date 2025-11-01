@@ -3,8 +3,10 @@ import { notes } from '../api.js'
 import { createNoteUI } from './notes/notes-ui.js';
 
 export function initResizing() {
-    notes.forEach(function (note, index) {
-        const currentNote = document.getElementById(index);
+    notes.forEach(function (note) {
+        const currentNote = document.getElementById(note.id);
+
+        console.log(currentNote, note.id, note)
 
         const boardRect = DOM.board.getBoundingClientRect();
         let minusX = 0;
@@ -47,7 +49,7 @@ let currentWidthHandler = null;
 let currentRotateHandler = null;
 
 export function increaseNote(id) {
-    const note = notes[id];
+    const note = notes.find((noteId) => noteId.id === id);;
     console.log(note);
 
     if (currentWidthHandler) {
@@ -62,12 +64,16 @@ export function increaseNote(id) {
         note.width = Number(width);
         note.height = Number(width) + 10;
         createNoteUI(id);
+
+        console.log(note.width);
     };
 
     currentRotateHandler = function(e) {
         const rotate = Number(e.target.value);
         note.rotate = rotate;
         createNoteUI(id);
+
+        console.log(note.rotate);
     };
 
     DOM.inputSize.addEventListener('input', currentWidthHandler);

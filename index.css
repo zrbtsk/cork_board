@@ -36,7 +36,15 @@ header {
   border: 15px solid #422f28;
   box-shadow: 6px 6px 8px 0 rgba(66, 47, 40, 0.8);
 }
+.board__trash {
+  position: absolute;
+  bottom: 35px;
+  right: 30px;
+  width: 35px;
 
+  display: none;
+  z-index: 20;
+}
 /* панель */
 .panel {
   width: 140px;
@@ -211,13 +219,21 @@ header {
   display: none;
 }
 .modal--btn {
-  padding: 5px 15px;
+  padding: 7px 17px;
   border-radius: 10px;
-  border: 2px solid #422f28;
+  background-color: #5e2611;
   width: fit-content;
   height: fit-content;
   font-weight: 600;
   font-size: 1.4rem;
+  color: #cdb89d;
+}
+.modal--close {
+  margin: 0 auto;
+}
+.modal--btn:hover {
+  color: #5e2611;
+  background-color: #cdb89d;
 }
 
 /* контент для названия, для написания и раскрашивания заметки */
@@ -305,7 +321,8 @@ header {
 
   margin-left: auto;
   padding: 15px;
-  align-items: flex-start;
+  justify-content: center;
+  grid-template-columns: 100%;
 
   position: absolute;
   left:700px;
@@ -313,6 +330,13 @@ header {
   z-index: 800;
 
   display: none;
+}
+.modal__resizing {
+    grid-template-rows: repeat(5, min-content);
+    gap: 15px;
+}
+.modal__palette {
+    grid-template-rows: 30px min-content 30px;
 }
 .modal__palette__container--forBtn,
 .modal__palette__container--forList {

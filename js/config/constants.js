@@ -28,6 +28,7 @@ export const DOM = {
     btnAdd: document.querySelector('.btnAdd'),
     btnPalette: document.querySelector('.btnPalette'),
     btnResizing: document.querySelector('.btnResizing'),
+    btnTrash: document.querySelector('.board__trash'),
 
     btnSaveText: document.querySelector('.modal__content__note--save'),
     btnClose: document.querySelectorAll('.modal--close'),

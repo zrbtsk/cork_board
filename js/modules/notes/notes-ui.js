@@ -1,8 +1,10 @@
 import { notes } from "../../api.js";
 import { DOM } from "../../config/constants.js";
+import { modalTitle } from "../modal/modal-ui.js";
 import { openPanel } from "../panel.js";
 
 export function addNotesUI(note) {
+    console.log('create node')
     const noteDiv = document.createElement('div');
     noteDiv.className = 'note';
     DOM.board.appendChild(noteDiv);
@@ -28,46 +30,44 @@ export function addNotesUI(note) {
 
 }
 export function clickNoteUI(color) {
-    openPanel()
+    openPanel(true);
     const notesDiv = document.querySelectorAll('.note');
     DOM.btnsPanel.forEach((btn) => {
-        btn.classList.remove('disabled')
+        btn.classList.remove('disabled');
+        if(btn.classList.contains('btnAdd')) {
+            btn.classList.add('disabled');
+        }
+        
     });
-    console.log( DOM.notes)
+    
     notesDiv.forEach((note)=> {
-        console.log('nooo policia')
         note.style.display='none'
     });
-    DOM.btnAdd.classList.add('panel__btn--before')
-    DOM.modal.style.display = 'block';
-    DOM.modalContent.style.display = 'block';
-    DOM.modalContent.style.backgroundColor = color;
-    DOM.modalTitle.style.display = 'grid';
-    DOM.modalPalette.style.display = 'none';
-    DOM.modalResizing.style.display = 'none';
+    modalTitle(color)
 }
 export function createNoteUI(index) {
     const noteDiv = document.querySelectorAll('.note');
 
     noteDiv.forEach((note) => {
 
-        if (Number(note.id) === Number(index)) {
+        if (note.id === index ) {
             console.log('ooo eeee');
+            const currentNote = notes.find((noteId) => noteId.id === index);
 
-            note.style.backgroundColor = notes[index].colorList;
-            note.style.left = notes[index].left + 'px';
-            note.style.top = notes[index].top + 'px';
-            note.style.width = notes[index].width + 'px';
-            note.style.height = notes[index].height + 'px';
-            note.style.transform = `rotate(${notes[index].rotate}deg)`
+            note.style.backgroundColor = currentNote.colorList;
+            note.style.left = currentNote.left + 'px';
+            note.style.top = currentNote.top + 'px';
+            note.style.width = currentNote.width + 'px';
+            note.style.height = currentNote.height + 'px';
+            note.style.transform = `rotate(${currentNote.rotate}deg)`
 
             const button = note.querySelector('.note__button');
             if (button) {
-                button.style.backgroundColor = notes[index].colorButton;
+                button.style.backgroundColor = currentNote.colorButton;
             }
             const title = note.querySelector('.note__title');
             if (title) {
-                title.textContent = notes[index].title;
+                title.textContent = currentNote.title;
             }
 
             console.log(note)
